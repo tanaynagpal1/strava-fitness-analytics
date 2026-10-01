@@ -1,0 +1,11 @@
+[theme]
+base = "light"
+primaryColor = "#FC4C02"              # Strava orange: buttons, sliders, selected filters, links
+backgroundColor = "#FFFFFF"           # page background
+secondaryBackgroundColor = "#F6F6F7"  # cards, inputs, sidebar
+textColor = "#1F2328"                 # near-black text, softer than pure black
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+baseRadius = "medium"                 # gently rounded corners
+borderColor = "#E6E6E9"
+showWidgetBorder = true
+chartCategoricalColors = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]
