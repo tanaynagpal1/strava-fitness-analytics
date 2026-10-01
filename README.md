@@ -25,14 +25,19 @@ Strava/
 └── app/                    Streamlit dashboard (11 pages)
 ```
 
+## Get the raw data
+
+The raw files are not stored in this repository. Download the public **FitBit Fitness Tracker Data** (Möbius, CC0) from Kaggle: https://www.kaggle.com/datasets/arashnic/fitbit — and put the 18 CSV files in a folder called `Data Source/` inside the project. The processed tables in `data/processed/` are already included, so the dashboard runs without this step.
+
 ## How to run
 
 ```bash
 pip install -r requirements.txt
 python run_pipeline.py          # ~15 s → data/processed/*.csv + reports/cleaning_check_report.md
+streamlit run app/app.py        # opens the dashboard at http://localhost:8501
 ```
 
-The run should end with **61/61 checks passed**. If a number changes, the report shows which rule (P / H / S / M / W / R / F) it belongs to.
+The run should end with **63/63 checks passed**. If a number changes, the report shows which rule (P / H / S / M / W / R / F) it belongs to.
 
 ## Output tables
 
