@@ -1,0 +1,22 @@
+# Python environment & caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Secrets — must NEVER be uploaded (Gemini key will live here)
+.streamlit/secrets.toml
+.env
+
+# Raw data — public Fitbit dataset, download link in README
+Data Source/
+
+# Internship-provided documents in the top folder (not ours to publish)
+/*.pdf
+/*.pptx
+
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
