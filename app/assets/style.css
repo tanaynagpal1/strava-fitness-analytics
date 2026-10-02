@@ -312,3 +312,12 @@ div[class*="st-key-anim_dots_"] .scatterlayer .point:nth-child(3n)   { animation
 .playbook tr { transition: background .2s; animation: fadeUp .45s ease both; }
 .playbook tr.on { background: color-mix(in srgb, var(--pc) 12%, #FFFFFF); }
 .playbook tr:hover { background: #FFF6F1; }
+/* ---------- User Explorer: profile card ---------- */
+.ux-head { display: flex; gap: 14px; align-items: center; margin: 6px 0 10px 0; }
+.ux-badge { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            color: #FFFFFF; font-size: 1.7rem; font-weight: 800; animation: pop .5s ease both; }
+.ux-rows div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #F1F2F5;
+               font-size: .88rem; animation: fadeUp .45s ease both; }
+.ux-rows span { color: #4B5563; font-weight: 700; }
+.ux-rows b { color: #17191D; text-align: right; }
+.ux-day { font-size: .86rem; color: #17191D; margin: 0; }
