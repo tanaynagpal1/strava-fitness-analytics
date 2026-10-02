@@ -259,3 +259,51 @@ def stacked_share(df, label_col, parts, colors, order):
     fig.update_xaxes(visible=False, range=[0, 100])
     fig.update_yaxes(categoryorder="array", categoryarray=order[::-1], title=None)
     return fig
+
+# ---------------------------------------------------------------- time formatting
+def hour_label(h):
+    """18 -> '6 PM' (whole hours)."""
+    h = int(h) % 24
+    return f"{h % 12 or 12} {'AM' if h < 12 else 'PM'}"
+
+
+def clock(hours):
+    """Hours since midnight (may be >24 or fractional) -> '11:11 PM'."""
+    if pd.isna(hours):
+        return "–"
+    total = round(hours * 60) % (24 * 60)
+    h, m = divmod(total, 60)
+    return f"{h % 12 or 12}:{m:02d} {'AM' if h < 12 else 'PM'}"
+
+
+def to_hours(text):
+    """'7:02 AM' -> 7.03 (hours since midnight)."""
+    if pd.isna(text):
+        return float("nan")
+    t, ampm = str(text).split()
+    h, m = map(int, t.split(":"))
+    return (h % 12 + (12 if ampm == "PM" else 0)) + m / 60
+
+# ---------------------------------------------------------------- time formatting
+def hour_label(h):
+    """18 -> '6 PM' (whole hours)."""
+    h = int(h) % 24
+    return f"{h % 12 or 12} {'AM' if h < 12 else 'PM'}"
+
+
+def clock(hours):
+    """Hours since midnight (may be >24 or fractional) -> '11:11 PM'."""
+    if pd.isna(hours):
+        return "–"
+    total = round(hours * 60) % (24 * 60)
+    h, m = divmod(total, 60)
+    return f"{h % 12 or 12}:{m:02d} {'AM' if h < 12 else 'PM'}"
+
+
+def to_hours(text):
+    """'7:02 AM' -> 7.03 (hours since midnight)."""
+    if pd.isna(text):
+        return float("nan")
+    t, ampm = str(text).split()
+    h, m = map(int, t.split(":"))
+    return (h % 12 + (12 if ampm == "PM" else 0)) + m / 60
