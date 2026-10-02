@@ -6,3 +6,4 @@ streamlit>=1.40
 google-genai>=1.0      # Ask AI page (Gemini)
 jupyter                # EDA notebook
 scipy>=1.11            # Spearman correlation
+fpdf2>=2.7             # Conclusion page PDF report

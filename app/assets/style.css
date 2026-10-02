@@ -321,3 +321,20 @@ div[class*="st-key-anim_dots_"] .scatterlayer .point:nth-child(3n)   { animation
 .ux-rows span { color: #4B5563; font-weight: 700; }
 .ux-rows b { color: #17191D; text-align: right; }
 .ux-day { font-size: .86rem; color: #17191D; margin: 0; }
+/* ---------- Conclusion: insight cards ---------- */
+.ins-head { display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: start; margin-bottom: 6px; }
+.ins-n { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+         background: #FFF1EA; color: #C2410C; font-weight: 800; animation: pop .45s ease both; }
+.ins-title { font-size: 1.08rem; font-weight: 800; color: #17191D; line-height: 1.3; }
+.ins-conf { font-size: .72rem; font-weight: 800; border: 1px solid; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.ins-ev { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+.ins-rec-h { color: #C2410C; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin: 6px 0 2px 0; }
+.ins-rec { font-size: .95rem; font-weight: 700; color: #17191D; margin: 0 0 10px 0; }
+.ins-chain { display: grid; grid-template-columns: 1fr 14px 1fr 14px 1fr 14px 1fr; gap: 6px; align-items: stretch; }
+.ins-chain div { background: #F3F4F6; border-radius: 10px; padding: 8px 10px; min-height: 58px; animation: fadeUp .45s ease both; }
+.ins-chain small { display: block; font-size: .64rem; font-weight: 800; color: #6B7280; text-transform: uppercase; letter-spacing: .05em; }
+.ins-chain b { font-size: .82rem; color: #17191D; }
+.ins-chain i { font-style: normal; color: #FC5200; font-weight: 800; text-align: center; align-self: center; }
+@media (max-width: 900px) { .ins-chain { grid-template-columns: 1fr 1fr; } .ins-chain i { display: none; } }
+.ins-list { margin: 6px 0 0 0; padding-left: 1.1rem; }
+.ins-list li { font-size: .9rem; color: #17191D; margin: 0 0 8px 0; line-height: 1.45; }
