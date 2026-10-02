@@ -221,3 +221,41 @@ def hero_route(steps_for_speed):
         '</svg>'
         f'<div class="runner" style="offset-path: path(\'{ROUTE}\'); --speed: {speed:.1f}s">🏃</div></div>',
         unsafe_allow_html=True)
+
+    # ---------------------------------------------------------------- shared chart builders
+def track_bars(df, label_col, value_col, colors, room=1.18):
+    """Horizontal bars drawn over a light grey full-length 'track', with 'n (share)' at the right end.
+
+    df needs: label_col, value_col, "label" (text at the end), "legend", "show_legend", "rank".
+    room = space kept on the right for the labels (use ~1.6 in narrow, one-third-width cards).
+    """
+    import plotly.graph_objects as go
+    total = max(df[value_col].max(), 1) * 1.1
+    fig = go.Figure()
+    fig.add_bar(y=df[label_col], x=[total] * len(df), orientation="h", marker_color=TRACK,
+                hoverinfo="skip", showlegend=False, text=df["label"], textposition="outside",
+                textfont=dict(size=13, color="#17191D"))
+    for _, r in df.iterrows():
+        fig.add_bar(y=[r[label_col]], x=[r[value_col]], orientation="h", name=r["legend"],
+                    marker_color=colors[r["legend"]], legendgroup=r["legend"],
+                    showlegend=r["show_legend"], legendrank=r["rank"],
+                    hovertemplate=f"{r[label_col]}: %{{x}}<extra></extra>")
+    fig.update_layout(barmode="overlay", bargap=.38)
+    fig.update_xaxes(visible=False, range=[0, total * room])
+    fig.update_yaxes(categoryorder="array", categoryarray=list(df[label_col])[::-1], title=None)
+    return fig
+
+
+def stacked_share(df, label_col, parts, colors, order):
+    """100% stacked horizontal bars: one row per label_col value, one colour per part (columns hold shares 0–1)."""
+    import plotly.graph_objects as go
+    fig = go.Figure()
+    for part in parts:
+        fig.add_bar(y=df[label_col], x=df[part] * 100, orientation="h", name=part, marker_color=colors[part],
+                    text=[f"{v:.0%}" if v >= .08 else "" for v in df[part]], textposition="inside",
+                    insidetextanchor="middle", textfont=dict(size=12, color="#FFFFFF" if part == parts[0] else "#17191D"),
+                    hovertemplate="%{y}: %{x:.0f}%<extra>" + part + "</extra>")
+    fig.update_layout(barmode="stack", bargap=.35, legend=dict(traceorder="normal"))
+    fig.update_xaxes(visible=False, range=[0, 100])
+    fig.update_yaxes(categoryorder="array", categoryarray=order[::-1], title=None)
+    return fig

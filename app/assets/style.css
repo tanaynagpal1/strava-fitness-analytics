@@ -133,3 +133,62 @@ div[class*="st-key-anim_fade_"] .main-svg { animation: fadeIn .6s ease both; }
 @keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 @keyframes goal    { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 @keyframes pulse  { 0%,100% { box-shadow: 0 0 0 0 rgba(252,76,2,.45); } 50% { box-shadow: 0 0 0 10px rgba(252,76,2,0); } }
+/* ---------- Activity: segment picker + runner track ---------- */
+.pick-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.pick-eyebrow { color: #C2410C; font-weight: 800; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; }
+.pick-all { color: #4B5563; font-weight: 700; font-size: .8rem; }
+.segcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 900px) { .segcards { grid-template-columns: repeat(2, 1fr); } }
+.segc { border: 1px solid #E1E4EA; border-radius: 12px; padding: 12px 14px; background: #FFFFFF; transition: all .25s; }
+.segc.on { border-color: #FC5200; background: #FFF8F4; box-shadow: 0 0 0 3px rgba(252,82,0,.10); }
+.segc .nm { font-size: .8rem; font-weight: 700; }
+.segc .v  { font-size: 1.45rem; font-weight: 800; color: #17191D; line-height: 1.2; }
+.segc .v small { font-size: .78rem; font-weight: 600; color: #4B5563; }
+.segc .m  { font-size: .75rem; font-weight: 600; color: #6B7280; }
+.trk { padding: 40px 14px 2px; }
+.trk-bar { position: relative; height: 8px; border-radius: 8px; background: #EEF0F3; }
+.trk-fill { position: absolute; left: 0; top: 0; bottom: 0; width: var(--x); border-radius: 8px;
+            background: linear-gradient(90deg, #FFB08A, #FC5200); animation: fillx var(--d) cubic-bezier(.22,.61,.36,1) both; }
+.trk-runner { position: absolute; top: 50%; left: var(--x); width: 42px; height: 42px; margin: -21px 0 0 -21px;
+              border-radius: 50%; background: #FFFFFF; border: 3px solid #FC5200; display: flex; align-items: center;
+              justify-content: center; font-size: 22px;
+              animation: slidex var(--d) cubic-bezier(.22,.61,.36,1) both, pulse 1.6s ease infinite; }
+.trk-goal { position: absolute; top: -34px; bottom: -8px; width: 2px; background: #17191D; }
+.trk-goal span { position: absolute; top: -4px; left: 7px; font-size: .72rem; font-weight: 800; color: #17191D; white-space: nowrap; }
+.trk-ticks { position: relative; height: 18px; margin-top: 16px; font-size: .72rem; color: #8B8F98; }
+.trk-ticks span { position: absolute; transform: translateX(-50%); }
+@keyframes fillx  { from { width: 0; } }
+@keyframes slidex { from { left: 0; } }
+/* ---------- more chart entrance animations ---------- */
+div[class*="st-key-anim_stack_"] .barlayer .point path {           /* stacked bars: each piece grows right */
+    transform-box: fill-box; transform-origin: 0% 50%; animation: grow 1s cubic-bezier(.22,.61,.36,1) both; }
+div[class*="st-key-anim_stack_"] .barlayer .trace:nth-child(2) path { animation-delay: .35s; }
+div[class*="st-key-anim_stack_"] .barlayer .trace:nth-child(3) path { animation-delay: .7s; }
+div[class*="st-key-anim_stack_"] .barlayer text { animation: fadeIn .5s 1s both; }
+div[class*="st-key-anim_box_"] .boxlayer .trace path {              /* boxes open out from the middle */
+    transform-box: fill-box; transform-origin: 50% 50%; animation: grow 1s cubic-bezier(.22,.61,.36,1) both; }
+div[class*="st-key-anim_box_"] .boxlayer .trace:nth-child(2) path { animation-delay: .12s; }
+div[class*="st-key-anim_box_"] .boxlayer .trace:nth-child(3) path { animation-delay: .24s; }
+div[class*="st-key-anim_box_"] .boxlayer .trace:nth-child(4) path { animation-delay: .36s; }
+/* ---------- Activity: segment summary table ---------- */
+.segwrap { overflow-x: auto; }
+.segtable { width: 100%; border-collapse: collapse; font-size: .85rem; margin-top: 10px; }
+.segtable th { text-align: right; font-size: .66rem; font-weight: 700; color: #6B7280; text-transform: uppercase;
+               letter-spacing: .04em; padding: 8px 6px; border-bottom: 2px solid #EEF0F3; vertical-align: bottom; }
+.segtable td { text-align: right; padding: 12px 6px; border-bottom: 1px solid #F1F2F5; color: #17191D; white-space: nowrap; }
+.segtable th:first-child, .segtable td:first-child { text-align: left; font-weight: 700; }
+.segtable tbody tr { transition: background .2s; animation: fadeUp .5s ease both; }
+.segtable tbody tr:nth-child(2) { animation-delay: .1s; }
+.segtable tbody tr:nth-child(3) { animation-delay: .2s; }
+.segtable tbody tr:nth-child(4) { animation-delay: .3s; }
+.segtable tbody tr:hover { background: #FFF6F1; }
+.segtable .sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; }
+/* ---------- cards side by side get the same height; "Show data" sits at the bottom ---------- */
+div[data-testid="stColumn"] > div[data-testid="stVerticalBlock"] > div[data-testid="stLayoutWrapper"]:has(> div[class*="st-key-card_"]) {
+    flex: 1 1 auto; }
+div[data-testid="stColumn"] div[class*="st-key-card_"] { height: 100%; }
+div[class*="st-key-card_"] > div[data-testid="stLayoutWrapper"]:last-child { margin-top: auto; }
+/* ---------- Activity: step-free workouts card ---------- */
+.stepfree { display: flex; gap: 12px; align-items: baseline; font-size: .9rem; line-height: 1.45; color: #17191D; margin-top: 8px; }
+.stepfree .big { font-size: 2.1rem; font-weight: 900; color: #C2410C; line-height: 1; }
+.stepfree-note { font-size: .85rem; color: #4B5563; margin: .6rem 0 0 0; }
