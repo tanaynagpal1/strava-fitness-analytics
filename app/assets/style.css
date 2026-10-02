@@ -220,3 +220,24 @@ div[class*="st-key-anim_clock_"] .scatterlayer .point { animation: fadeIn .3s .6
 div[class*="st-key-anim_wipe_"] .heatmaplayer { animation: wipe 1.3s cubic-bezier(.22,.61,.36,1) both; }
 div[class*="st-key-anim_wipe_"] .layer-above path { animation: fadeIn .4s 1.2s both; }
 @keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+/* ---------- Sleep: data note + one-night hero ---------- */
+.note-warn { background: #FFF8E6; border: 1px solid #F5D78A; color: #6B4E00; border-radius: 12px; padding: 10px 14px;
+             font-size: .88rem; margin-bottom: 4px; }
+div.st-key-card_night { background: linear-gradient(135deg, #F3EFFD 0%, #E6DEFA 100%); border-color: #D9CFF5 !important; }
+.night { display: grid; grid-template-columns: 260px 1fr; gap: 24px; align-items: end; }
+@media (max-width: 900px) { .night { grid-template-columns: 1fr; } }
+.night-eyebrow { color: #6D4FC4; font-weight: 800; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
+.night-time { font-size: 1.9rem; font-weight: 800; color: #17191D; line-height: 1.15; margin: 4px 0; }
+.night-asleep { color: #5B3FB0; font-weight: 700; font-size: .92rem; margin: 0; }
+.night-sky { position: relative; height: 150px; }
+.night-sky i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #8B79D6;
+               animation: twinkle 2.4s ease-in-out infinite; }
+.moon { position: absolute; top: 18%; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%;
+        box-shadow: inset -9px -2px 0 0 #F5C84C; animation: float 4s ease-in-out infinite; }
+.night-axis { position: absolute; left: 0; right: 0; bottom: 22px; height: 2px; background: #C9BEEE; }
+.night-bar { position: absolute; top: -6px; height: 12px; border-radius: 8px; background: linear-gradient(90deg, #8E73E0, #6D4FC4);
+             transform-origin: 0 50%; animation: grow 1.6s cubic-bezier(.22,.61,.36,1) both;
+             box-shadow: 0 4px 14px -4px rgba(109,79,196,.7); }
+.night-ticks span { position: absolute; top: 12px; transform: translateX(-50%); font-size: .72rem; font-weight: 700;
+                    color: #5E5A72; white-space: nowrap; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
