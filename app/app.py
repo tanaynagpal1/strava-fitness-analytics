@@ -1,8 +1,11 @@
 import streamlit as st
 
 import filters
+import ui
 
-st.set_page_config(page_title="Strava Fitness Analytics", page_icon="🏃", layout="wide")
+st.set_page_config(page_title="Strava Fitness Analytics", page_icon=str(ui.ASSETS / "strava_icon.png"), layout="wide")
+st.logo(str(ui.ASSETS / "strava_header_logo.png"), size="large")
+ui.apply_style(motion=st.session_state.get("motion", True))
 
 pages = [
     st.Page("views/overview.py",      title="Overview",      icon=":material/dashboard:", default=True),
@@ -21,3 +24,4 @@ pages = [
 pg = st.navigation(pages, position="top")
 filters.render()
 pg.run()
+ui.footer()

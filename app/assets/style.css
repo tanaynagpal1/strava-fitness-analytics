@@ -1,0 +1,135 @@
+/* =====================================================================
+   Strava Fitness Analytics — global styles (loaded by ui.apply_style)
+   ===================================================================== */
+
+/* ---------- logo: bigger than Streamlit's default ---------- */
+img[data-testid="stHeaderLogo"] { height: 28px !important; max-height: 28px !important; width: auto !important; max-width: none !important; margin-right: 1rem; }
+
+/* ---------- page spacing ---------- */
+[data-testid="stMainBlockContainer"] { padding-top: 4.2rem; padding-bottom: 2rem; max-width: 1480px; }
+
+/* ---------- chart cards: every st.container(key="card_…") ---------- */
+div[class*="st-key-card_"] { background: #FFFFFF; border: 1px solid #E1E4EA !important; border-radius: 16px;
+                             padding: 18px 20px 12px; box-shadow: 0 1px 3px rgba(16,24,40,.06);
+                             transition: border-color .25s, box-shadow .25s; animation: fadeUp .55s ease both; }
+div[class*="st-key-card_"]:hover { border-color: #FFC4A6 !important;
+                                   box-shadow: 0 0 0 3px rgba(252,82,0,.06), 0 10px 24px -14px rgba(252,82,0,.35); }
+
+/* ---------- filter panel (st.container key="filters") ---------- */
+div.st-key-filters { position: relative; overflow: hidden; border-radius: 18px; padding: 22px 24px 14px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFAF7 100%); border: 1px solid #FFD8C4 !important;
+    box-shadow: 0 0 0 4px rgba(252,82,0,.04), 0 12px 32px -16px rgba(252,82,0,.35);
+    transition: box-shadow .3s; animation: fadeUp .5s ease both; }
+div.st-key-filters::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+    background: linear-gradient(90deg, #FC5200 0%, #FF8A4C 55%, #FFC9AD 100%); }
+div.st-key-filters:hover { box-shadow: 0 0 0 4px rgba(252,82,0,.08), 0 16px 40px -16px rgba(252,82,0,.45); }
+.fhead { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.ficon { flex: 0 0 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center;
+         background: linear-gradient(135deg, #FC5200, #FF8A4C); box-shadow: 0 6px 14px -6px rgba(252,82,0,.7); }
+.ftitle { font-size: 1.02rem; font-weight: 800; color: #17191D; margin: 0; line-height: 1.2; }
+.fsub   { font-size: .8rem; color: #8B8F98; margin: 0; }
+div.st-key-filters [data-testid="stWidgetLabel"] p { font-size: .7rem; font-weight: 700; letter-spacing: .09em;
+                                                     text-transform: uppercase; color: #8B8F98; }
+div.st-key-filters [data-testid="stButtonGroup"] button { transition: all .2s; }
+div.st-key-filters [data-testid="stButtonGroup"] button[aria-pressed="false"]:hover,
+div.st-key-filters [data-testid="stButtonGroup"] button[aria-checked="false"]:hover {
+    border-color: #FC5200; color: #C2410C; background: #FFF4EE; }
+div.st-key-filters [data-testid="stButtonGroup"] button[aria-pressed="true"] {
+    box-shadow: 0 4px 12px -6px rgba(252,82,0,.8); }
+.fsummary { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: .82rem; color: #6B7280;
+            border-top: 1px dashed #FFD3BD; padding-top: 10px; }
+.fsummary .chip { background: #FFF1EA; color: #C2410C; border: 1px solid #FFD3BD; border-radius: 999px;
+                  padding: 2px 11px; font-weight: 700; }
+.fsummary .dot { width: 8px; height: 8px; border-radius: 50%; background: #1F9D74; box-shadow: 0 0 0 3px rgba(31,157,116,.18); }
+
+/* ---------- page heading ---------- */
+.eyebrow { color: #FC4C02; font-weight: 700; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 .2rem 0; }
+.page-title { font-size: 2.1rem; font-weight: 800; color: #17191D; margin: 0; line-height: 1.2; }
+.page-q { color: #6B7280; margin: .25rem 0 0 0; }
+
+/* ---------- card titles ---------- */
+.ctitle { font-size: 1.12rem; font-weight: 700; color: #17191D; margin: 0; }
+.csub   { font-size: .85rem; color: #6B7280; margin: .15rem 0 0 0; }
+
+/* ---------- hero banner (st.container key="hero") ---------- */
+div.st-key-hero { background: linear-gradient(135deg, #FFF1EA 0%, #FFE4D6 100%); border: 1px solid #FFD3BD;
+                  border-radius: 18px; padding: 30px 34px 18px; animation: fadeUp .6s ease both; }
+.hero-title { font-size: 2.55rem; font-weight: 800; line-height: 1.08; color: #17191D; margin: 0 0 .8rem 0; }
+.hero-text  { color: #4B5563; font-size: .98rem; margin: 0 0 1rem 0; max-width: 560px; }
+.hero-typical { font-weight: 700; color: #17191D; font-size: .92rem; margin-bottom: .55rem; }
+.steps { display: flex; gap: 9px; align-items: flex-end; height: 46px; }
+.steps span { width: 11px; height: 16px; border-radius: 50%; background: #D9DCE1; transform: rotate(-14deg);
+              animation: pop .35s ease both; }
+.steps span:nth-child(even) { margin-bottom: 16px; transform: rotate(14deg); }
+.steps span.on { background: #FC4C02; animation: pop .35s ease both, twinkle 2.6s ease-in-out infinite; }
+.steps .flag.met { animation: goal 1.6s ease-in-out infinite; }
+.steps .flag { display: flex; flex-direction: column; align-items: center; margin-left: 10px; font-size: .72rem;
+               font-weight: 800; color: #17191D; align-self: flex-start; white-space: nowrap; }
+.route-box { position: relative; width: 560px; max-width: 100%; height: 190px; margin-left: auto; overflow: hidden; }
+.route-box svg { position: absolute; left: 0; top: 0; }
+.route { stroke-dasharray: 2 9; animation: dash 1.1s linear infinite; }
+.runner { position: absolute; left: 0; top: 0; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%;
+          background: #FFFFFF; border: 3px solid #FC4C02; display: flex; align-items: center; justify-content: center;
+          font-size: 21px; offset-rotate: 0deg; animation: run var(--speed, 6s) linear infinite, pulse 1.6s ease infinite; }
+.hero-pace { text-align: right; font-size: .8rem; font-weight: 700; color: #C2410C; margin: .2rem 0 0 0; }
+.hero-note { text-align: right; font-size: .7rem; color: #8B8F98; margin: 0; }
+
+/* ---------- KPI cards ---------- */
+.kcard { background: #FFFFFF; border: 1px solid #E1E4EA; border-radius: 14px; padding: 16px 18px 14px;
+         min-height: 128px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(16,24,40,.06); animation: fadeUp .5s ease both;
+         transition: border-color .25s, box-shadow .25s; }
+.kcard:hover { border-color: #FFC4A6; box-shadow: 0 0 0 3px rgba(252,82,0,.06), 0 10px 24px -14px rgba(252,82,0,.35); }
+.kcard .bar { width: 26px; height: 4px; border-radius: 4px; background: var(--accent, #FC4C02); margin-bottom: 9px; }
+.kcard .label { font-size: .8rem; font-weight: 700; color: #374151; line-height: 1.2; min-height: 2em; }
+.kcard .row { display: flex; align-items: center; gap: 8px; }
+.kcard .value { font-size: 1.75rem; font-weight: 800; color: #17191D; line-height: 1.15; }
+.kcard .sub   { font-size: .72rem; color: #6B7280; margin-top: 2px; }
+.kcard .delta { font-size: .72rem; color: #374151; margin-top: 3px; font-weight: 700; }
+
+/* ---------- "So what?" callout ---------- */
+.sowhat { display: flex; gap: 16px; background: #FFF1EA; border: 1px solid #FFD3BD; border-radius: 16px; padding: 18px 22px; }
+.sowhat .icon { flex: 0 0 38px; height: 38px; border-radius: 10px; background: #FFFFFF; display: flex;
+                align-items: center; justify-content: center; font-size: 20px; }
+.sowhat h4 { color: #C2410C; font-size: 1.05rem; margin: 0 0 .35rem 0; padding: 0; }
+.sowhat ul { margin: 0; padding-left: 1.1rem; }
+.sowhat li { margin: .2rem 0; font-size: .92rem; color: #17191D; }
+.sowhat small { color: #8B8F98; }
+
+/* ---------- explore cards ---------- */
+div[class*="st-key-explore_"] { background: #FFFFFF; border-radius: 14px; padding: 12px 16px 6px; }
+div[class*="st-key-explore_"] [data-testid="stPageLink"] p { color: #C2410C; font-weight: 700; }
+
+/* ---------- footer ---------- */
+.footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: #9CA3AF;
+          font-size: .75rem; border-top: 1px solid #E6E6E9; padding-top: 12px; margin-top: 1.5rem; }
+
+/* ---------- chart entrance animations (ui.chart(..., anim=...)) ---------- */
+/* each chart waits (paused) until it scrolls into view; the script in ui.py then sets data-inview */
+div[class*="st-key-anim_"]:not([data-inview]) * { animation-play-state: paused !important; }
+div[class*="st-key-anim_rise_"] .barlayer .point path {            /* vertical bars grow up */
+    transform-box: fill-box; transform-origin: 50% 100%; animation: rise 1.1s cubic-bezier(.22,.61,.36,1) both; }
+div[class*="st-key-anim_grow_"] .barlayer .trace:not(:first-child) .point path {   /* horizontal bars grow right */
+    transform-box: fill-box; transform-origin: 0% 50%; animation: grow 1.1s cubic-bezier(.22,.61,.36,1) both; }
+div[class*="st-key-anim_grow_"] .barlayer .trace:nth-child(3) path { animation-delay: 120ms; }
+div[class*="st-key-anim_grow_"] .barlayer .trace:nth-child(4) path { animation-delay: 240ms; }
+div[class*="st-key-anim_grow_"] .barlayer .trace:nth-child(5) path { animation-delay: 360ms; }
+div[class*="st-key-anim_grow_"] .barlayer .trace:nth-child(6) path { animation-delay: 480ms; }
+div[class*="st-key-anim_grow_"] .barlayer .trace:first-child text { animation: fadeIn .5s 1s both; }
+div[class*="st-key-anim_draw_"] .scatterlayer .js-line {           /* line draws itself */
+    stroke-dasharray: var(--len, 2000); stroke-dashoffset: var(--len, 2000); animation: draw 1.6s cubic-bezier(.22,.61,.36,1) forwards; }
+div[class*="st-key-anim_draw_"] .scatterlayer .js-fill { animation: fadeIn 1s .4s both; }
+div[class*="st-key-anim_draw_"] .scatterlayer .point  { animation: fadeIn .4s 1.4s both; }
+div[class*="st-key-anim_fade_"] .main-svg { animation: fadeIn .6s ease both; }
+
+/* ---------- motion ---------- */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes pop    { from { opacity: 0; transform: scale(.4); } to { opacity: 1; } }
+@keyframes dash   { to { stroke-dashoffset: -22; } }
+@keyframes run    { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes rise    { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes grow    { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes draw    { to { stroke-dashoffset: 0; } }
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes goal    { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+@keyframes pulse  { 0%,100% { box-shadow: 0 0 0 0 rgba(252,76,2,.45); } 50% { box-shadow: 0 0 0 10px rgba(252,76,2,0); } }
