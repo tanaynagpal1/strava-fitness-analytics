@@ -253,3 +253,62 @@ div.st-key-card_night { background: linear-gradient(135deg, #F3EFFD 0%, #E6DEFA 
 .streak i.d-partial { background: #FFFFFF; border: 2px solid #E0A526; }
 .streak i.d-not_worn { background: #D9534F; }
 .streak-note { font-size: .82rem; color: #4B5563; margin: 10px 0 0 0; }
+/* ---------- Body & Heart: heartbeat hero ---------- */
+.ecg { width: 100%; height: 130px; display: block; }
+.ecg path { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.ecg-base { stroke: #F6D2D1; }
+.ecg-line { stroke: #D9534F; stroke-dasharray: 160 840; animation: ecg var(--beat, 2.4s) linear infinite;
+            filter: drop-shadow(0 0 4px rgba(217,83,79,.55)); }
+.ecg-value { color: #D9534F; font-size: 1.45rem; font-weight: 800; margin: .4rem 0 0 0; }
+@keyframes ecg { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
+/* ---------- Body & Heart: scatter dots + "can / cannot say" list ---------- */
+div[class*="st-key-anim_dots_"] .scatterlayer .point {
+    transform-box: fill-box; transform-origin: 50% 50%; animation: pop .45s cubic-bezier(.22,.61,.36,1) both; }
+div[class*="st-key-anim_dots_"] .scatterlayer .point:nth-child(3n+1) { animation-delay: .1s; }
+div[class*="st-key-anim_dots_"] .scatterlayer .point:nth-child(3n+2) { animation-delay: .35s; }
+div[class*="st-key-anim_dots_"] .scatterlayer .point:nth-child(3n)   { animation-delay: .6s; }
+.limits { list-style: none; padding: 0; margin: 8px 0 0 0; }
+.limits li { position: relative; padding-left: 26px; margin: 0 0 14px 0; font-size: .9rem; color: #17191D; line-height: 1.45; }
+.limits li::before { position: absolute; left: 0; top: 0; font-weight: 900; }
+.limits li.ok::before { content: "✓"; color: #1F9D74; }
+.limits li.no::before { content: "✕"; color: #D9534F; }
+/* ---------- Personas: matrix + persona card ---------- */
+.pmatrix { display: grid; grid-template-columns: 120px repeat(3, 1fr); gap: 8px; align-items: stretch; margin-top: 8px; }
+.pm-h { text-align: center; font-size: .78rem; font-weight: 800; color: #C2410C; padding-bottom: 2px; }
+.pm-r { display: flex; align-items: center; font-size: .82rem; font-weight: 800; }
+.pm-c { border: 1px solid #E1E4EA; border-radius: 12px; padding: 10px 12px; min-height: 64px;
+        background: color-mix(in srgb, var(--pc) 10%, #FFFFFF); transition: all .25s; animation: fadeUp .45s ease both; }
+.pm-c b { display: block; font-size: 1.35rem; font-weight: 800; color: #17191D; line-height: 1.1; }
+.pm-c span { font-size: .74rem; font-weight: 700; color: #374151; }
+.pm-c.on { border: 2px solid var(--pc); background: color-mix(in srgb, var(--pc) 20%, #FFFFFF);
+           box-shadow: 0 6px 16px -8px var(--pc); }
+.pm-c.empty { display: flex; align-items: center; justify-content: center; color: #C9CDD4; background: #FAFAFB; }
+.pc-head { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+.pc-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+           font-size: 26px; animation: pop .5s ease both; }
+.pc-name { font-size: 1.5rem; font-weight: 800; color: #17191D; line-height: 1.1; }
+.pc-rule { font-size: .8rem; font-weight: 700; color: #6B7280; }
+.pc-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+.pc-tiles.two { grid-template-columns: 1fr 1fr; }
+.pc-tiles div { background: #F3F4F6; border-radius: 10px; padding: 8px 10px; animation: fadeUp .5s ease both; }
+.pc-tiles small { display: block; font-size: .7rem; font-weight: 700; color: #6B7280; }
+.pc-tiles b { font-size: 1rem; font-weight: 800; color: #17191D; }
+.pc-play div { display: grid; grid-template-columns: 28px 140px 1fr; gap: 10px; align-items: center;
+               padding: 9px 0; border-bottom: 1px solid #F1F2F5; font-size: .88rem; }
+.pc-play i { width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+             font-style: normal; font-weight: 800; color: var(--pc); background: color-mix(in srgb, var(--pc) 14%, #FFFFFF); }
+.pc-play span { color: #6B7280; font-weight: 700; font-size: .8rem; }
+.pc-play b { color: #17191D; }
+.pc-note { font-size: .75rem; font-weight: 700; color: #8B8F98; margin: 8px 0 0 0; }
+@media (max-width: 900px) { .pc-tiles { grid-template-columns: 1fr 1fr; } .pmatrix { grid-template-columns: 90px repeat(3, 1fr); } }
+/* ---------- Personas: playbook table ---------- */
+.playbook { width: 100%; border-collapse: collapse; font-size: .84rem; margin-top: 10px; }
+.playbook th { text-align: left; font-size: .68rem; font-weight: 700; color: #6B7280; text-transform: uppercase;
+               letter-spacing: .04em; padding: 8px; border-bottom: 2px solid #EEF0F3; }
+.playbook td { padding: 11px 8px; border-bottom: 1px solid #F1F2F5; color: #17191D; vertical-align: top; }
+.playbook td:first-child { font-weight: 800; white-space: nowrap; }
+.playbook td:nth-child(2) { text-align: center; font-weight: 700; }
+.playbook td i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--pc); margin-right: 6px; }
+.playbook tr { transition: background .2s; animation: fadeUp .45s ease both; }
+.playbook tr.on { background: color-mix(in srgb, var(--pc) 12%, #FFFFFF); }
+.playbook tr:hover { background: #FFF6F1; }
