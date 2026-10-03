@@ -1,9 +1,8 @@
-# Strava Fitness Data Analytics — Python 3.10+
-pandas>=2.1
-numpy>=1.26
-plotly>=5.20
-streamlit>=1.40
-google-genai>=1.0      # Ask AI page (Gemini)
-jupyter                # EDA notebook
-scipy>=1.11            # Spearman correlation
-fpdf2>=2.7             # Conclusion page PDF report
+# Strava Fitness Analytics dashboard - Python 3.13
+# Exact versions = the ones tested on the laptop, so the online app behaves the same
+streamlit==1.64.0
+pandas==3.0.6
+numpy==2.5.3
+plotly==7.1.0
+google-genai==2.28.0   # Ask AI page (Gemini)
+fpdf2==2.8.9           # Conclusion page PDF report

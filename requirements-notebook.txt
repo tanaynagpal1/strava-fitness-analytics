@@ -1,0 +1,5 @@
+# Extra libraries for the EDA notebook - not needed by the dashboard
+# Install with:  pip install -r requirements-notebook.txt
+-r requirements.txt
+jupyter
+scipy==1.18.1          # Spearman correlation
