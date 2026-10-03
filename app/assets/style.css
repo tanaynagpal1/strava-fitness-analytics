@@ -396,3 +396,39 @@ div[class*="st-key-anim_dots_"] .scatterlayer .point:nth-child(3n)   { animation
           animation: fadeUp .4s ease both; }
 .ai-def b { color: #17191D; font-size: 1rem; }
 .ai-def p { margin: 4px 0 0 0; font-size: .9rem; color: #374151; line-height: 1.5; }
+/* ---------- About: pipeline, tables, trust ---------- */
+.ab-flow { display: flex; align-items: stretch; gap: 10px; margin: 14px 0 12px 0; }
+.ab-step { flex: 1; background: #FFFFFF; border: 1px solid #E1E4EA; border-radius: 16px; padding: 16px 18px;
+           animation: fadeUp .5s ease both; transition: transform .2s, box-shadow .2s; }
+.ab-step:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(252,76,2,.12); }
+.ab-step.warm { background: #FFF1EA; border-color: #FFD3BD; }
+.ab-step.cool { background: #E7F6F0; border-color: #BFE6D6; }
+.ab-step b { display: block; font-size: 2.1rem; font-weight: 800; color: #17191D; line-height: 1.1; }
+.ab-step span { display: block; font-weight: 800; color: #17191D; margin-top: 4px; }
+.ab-step small { display: block; color: #6B7280; font-size: .8rem; line-height: 1.4; margin-top: 2px; }
+.ab-arrow { align-self: center; color: #FC4C02; font-style: normal; font-size: 1.8rem; font-weight: 800;
+            animation: nudge 1.6s ease-in-out infinite; }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+@media (max-width: 900px) { .ab-flow { flex-direction: column; } .ab-arrow { transform: rotate(90deg); animation: none; } }
+.ab-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px 0; }
+.ab-chips span { background: #E7F6F0; color: #146C51; border: 1px solid #BFE6D6; border-radius: 999px; padding: 5px 12px;
+                 font-size: .8rem; font-weight: 700; animation: fadeUp .45s ease both; }
+.ab-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 8px; }
+@media (max-width: 1100px) { .ab-grid { grid-template-columns: repeat(2, 1fr); } }
+.ab-tile { border: 1px solid #E1E4EA; border-radius: 12px; padding: 12px 14px; background: #FAFBFC;
+           animation: fadeUp .45s ease both; transition: border-color .2s, background .2s; }
+.ab-tile:hover { border-color: #FFC4A6; background: #FFFFFF; }
+.ab-tile code { font-weight: 800; color: #17191D; background: none; padding: 0; font-size: .86rem; }
+.ab-tile p { margin: 6px 0 2px 0; font-size: .8rem; color: #374151; font-weight: 700; }
+.ab-tile p b { font-size: 1.35rem; color: #17191D; }
+.ab-tile small { color: #6B7280; font-size: .78rem; line-height: 1.4; display: block; }
+.ab-trust div { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 12px 0;
+                border-bottom: 1px solid #F1F2F5; animation: fadeUp .45s ease both; }
+.ab-trust b { color: #17191D; font-size: .95rem; grid-row: 1; grid-column: 1; }
+.ab-trust small { color: #4B5563; font-size: .82rem; line-height: 1.45; grid-column: 1 / 3; }
+.ab-lvl { grid-row: 1; grid-column: 2; font-size: .72rem; font-weight: 800; border: 1px solid; border-radius: 999px;
+          padding: 2px 10px; white-space: nowrap; align-self: start; }
+.ab-rows div { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-bottom: 1px solid #F1F2F5;
+               animation: fadeUp .45s ease both; }
+.ab-rows b { color: #17191D; font-size: .88rem; }
+.ab-rows span { color: #4B5563; font-size: .84rem; line-height: 1.45; }
